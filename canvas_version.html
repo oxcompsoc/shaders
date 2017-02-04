@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas version</title>
+        <style>
+            canvas {
+                background-color: white;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="ctx" width="512" height="512"></canvas>
+        <script src="myfunc.js"></script>
+        <script>
+            var canvas = document.getElementById("ctx");
+            var ctx = canvas.getContext('2d');
+
+            var data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            for (var y = 0; y < canvas.height; y++) {
+                for (var x = 0; x < canvas.width; x++) {
+                    var i = (y * canvas.width + x) * 4;
+                    var c = myfunc(x, y, canvas.width, canvas.height);
+                    data.data[i + 0] = c.r * 255;
+                    data.data[i + 1] = c.g * 255;
+                    data.data[i + 2] = c.b * 255;
+                    data.data[i + 3] = c.a * 255;
+                }
+            }
+            
+            ctx.putImageData(data, 0, 0);
+        </script>
+    </body>
+</html>
