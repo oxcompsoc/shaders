@@ -1,0 +1,1 @@
+m=Math;q=(x,w)=>{a=m.trunc(w/4);return x%a-m.trunc(a/2)};myfunc=(x,y,w,h)=>{u=q(x,w);v=q(y,h);if(m.sqrt(u*u+v*v)>m.trunc(w/4)/3){return 0}if([[0,1,0,1],[1,1,1],[0,1],[0,1,1]][m.trunc(4*y/h)][m.trunc(4*x/w)]){return{r:0.13,g:0.29,b:0.53,a:1}}return{r:0.8,g:0.84,b:0.99,a:1}}
